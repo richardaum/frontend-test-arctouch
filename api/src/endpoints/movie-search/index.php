@@ -2,8 +2,6 @@
 use \Psr\Http\Message\ResponseInterface as Response;
 use \Psr\Http\Message\ServerRequestInterface as Request;
 
-require_once __DIR__ . "/../../infrastructure/tmdb/movie-search.php";
-
 function movieSearch(Request $request, Response $response, array $args)
 {
     $query = $request->getQueryParam("query");
@@ -14,7 +12,8 @@ function movieSearch(Request $request, Response $response, array $args)
             withStatus(400)->
             withJson($payload);
     } else {
-        $data = searchMovie([
+        $api = new TmbdiApi();
+        $data = $api->search_movie([
             "page" => $request->getQueryParam("page"),
             "query" => $query,
         ]);

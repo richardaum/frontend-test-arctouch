@@ -4,6 +4,7 @@ require "../infrastructure/dotenv.php";
 require "../endpoints/movies/index.php";
 require "../endpoints/movie/index.php";
 require "../endpoints/movie-search/index.php";
+require "../infrastructure/tmdb/TmdbApi.php";
 
 $app = new \Slim\App;
 $app->group("/api", function () {
