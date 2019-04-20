@@ -44,7 +44,7 @@ class TmbdiApi
 
     public function get_movie($params)
     {
-        return $this->get("GET", "/movie/" . $params["movie_id"]);
+        return $this->request("GET", "/movie/" . $params["movie_id"]);
     }
 
     public function search_movie($params)
