@@ -4,8 +4,8 @@ const imageBaseUrl = 'https://image.tmdb.org/t/p/';
 const baseUrl = 'http://localhost/api';
 
 class Api {
-  async getUpcomingMovies() {
-    const response = await Axios.get(`${baseUrl}/movies`);
+  async getUpcomingMovies({ page } = {}) {
+    const response = await Axios.get(`${baseUrl}/movies`, { params: { page } });
     return response.data;
   }
 

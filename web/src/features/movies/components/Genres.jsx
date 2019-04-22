@@ -10,7 +10,7 @@ export default observer(function Genres({ movieId }) {
   const css = `
     && {
       display: inline-block;
-      color: ${colors.sunflower};
+      color: ${colors.light.hawaiianTan};
       margin-right: ${measures.unit(2)}px;
     }
   `;

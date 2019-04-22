@@ -11,4 +11,6 @@ html, body, #root {
 
 body {
   background: #f3f3f3;
+  /* overflow: auto !important; */
+  /* padding-right: 0 !important; */
 }

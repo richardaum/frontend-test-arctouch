@@ -1,16 +1,16 @@
 import React from 'react';
 import { observer } from 'mobx-react';
-import moviesStore from '../../../infrastructure/stores/moviesStore';
-import genresStore from '../../../infrastructure/stores/genresStore';
+import moviesStore from '../stores/moviesStore';
+import genresStore from '../stores/genresStore';
 import Typography from '@material-ui/core/Typography';
-import measures from '../../../infrastructure/styles/measures';
-import colors from '../../../infrastructure/styles/colors';
+import measures from '../styles/measures';
+import colors from '../styles/colors';
 
 const Genre = observer(function Genre({ genreId }) {
   const css = `
     && {
       display: inline-block;
-      color: ${colors.sunflower};
+      color: ${colors.dark.tahitiGold};
       text-transform: uppercase;
       margin-right: ${measures.unit(2)}px;
     }
@@ -22,8 +22,8 @@ const Genre = observer(function Genre({ genreId }) {
   );
 });
 
-export default observer(function Genres() {
+export default observer(function Genres({ movieId }) {
   return moviesStore
-    .getFirstMovie()
+    .getMovie(movieId)
     .genre_ids.map(genreId => <Genre key={genreId} genreId={genreId} />);
 });

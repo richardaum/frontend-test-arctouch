@@ -4,6 +4,7 @@ import measures from '../../../infrastructure/styles/measures';
 import colors from '../../../infrastructure/styles/colors';
 import Typography from '@material-ui/core/Typography';
 import MoviesItems from './MoviesItems';
+import DetailsDialog from './Details';
 
 const Background = styled.div({
   background: colors.concrete,
@@ -25,6 +26,7 @@ const Tabs = styled.div({
   height: measures.bottomCover + measures.unit(2),
   position: 'sticky',
   top: 0,
+  zIndex: 1,
 });
 
 const Border = styled.div({
@@ -32,7 +34,7 @@ const Border = styled.div({
   flexFlow: 'row nowrap',
   justifyContent: 'center',
   borderBottom: `3px solid ${colors.mercury}`,
-  height: measures.bottomCover - measures.unit(1) + 4,
+  height: measures.bottomCover,
   width: 'fit-content',
   margin: 'auto',
 });
@@ -43,8 +45,10 @@ const Title = styled(function Title({ active, ...props }) {
   '&&': {
     cursor: !active ? 'pointer' : 'default',
     textTransform: 'uppercase',
-    color: active ? colors.sunflower : colors.emperor,
-    borderBottom: `3px solid ${active ? colors.sunflower : 'transparent'}`,
+    color: active ? colors.light.hawaiianTan : colors.emperor,
+    borderBottom: `3px solid ${
+      active ? colors.light.hawaiianTan : 'transparent'
+    }`,
 
     padding: measures.unit(2),
     paddingTop: measures.unit(2),
@@ -56,8 +60,7 @@ const Title = styled(function Title({ active, ...props }) {
     },
 
     '&:hover': {
-      color: !active ? 'black' : colors.sunflower,
-      fontWeight: !active ? 500 : 'inherit',
+      color: colors.light.hawaiianTan,
     },
   },
 }));
@@ -74,6 +77,8 @@ export default function Movies() {
         </Tabs>
         <MoviesItems />
       </Content>
+
+      <DetailsDialog />
     </Background>
   );
 }

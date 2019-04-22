@@ -3,10 +3,14 @@ import styled from 'styled-components';
 import api from '../../../infrastructure/api';
 import moviesStore from '../../../infrastructure/stores/moviesStore';
 import measures from '../../../infrastructure/styles/measures';
-import Genres from './Genres';
-import Overview from './Overview';
-import ReleaseDate from './ReleaseDate';
+import Genres from '../../../infrastructure/components/Genres';
 import Text from '../../../infrastructure/components/Text';
+import ReleaseDate, {
+  releaseDateCss,
+} from '../../../infrastructure/components/ReleaseDate';
+import Overview, {
+  overviewCss,
+} from '../../../infrastructure/components/Overview';
 
 const Movie = styled.div(props => ({
   height: '90%',
@@ -37,14 +41,15 @@ const Title = styled(Text).attrs({ variant: 'h2' })({
 export default function Cover() {
   const movie = moviesStore.getFirstMovie();
   const src = api.getImageUrl({ path: movie.backdrop_path });
+
   return (
     <Movie image={src}>
       <Shadow>
         <Content>
-          <ReleaseDate />
+          <ReleaseDate css={releaseDateCss} movieId={movie.id} />
           <Title>{movie.title}</Title>
-          <Genres />
-          <Overview />
+          <Genres movieId={movie.id} />
+          <Overview css={overviewCss} movieId={movie.id} />
         </Content>
       </Shadow>
     </Movie>
