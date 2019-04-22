@@ -1,16 +1,11 @@
 import { observable, action } from 'mobx';
-import autobind from 'autobind-decorator';
-import api from '../api';
 
 class MoviesStore {
   #moviesCache = {};
-
-  @observable movies;
-
-  @observable moviesList = [];
+  @observable movies = [];
 
   getMovies() {
-    return this.moviesList;
+    return this.movies;
   }
 
   getMovie(id) {
@@ -26,25 +21,9 @@ class MoviesStore {
     return this.getMovie(firstMovieId);
   }
 
-  canLoadMore() {
-    return this.movies.page < this.movies.total_pages;
-  }
-
   @action
   setMovies(movies) {
-    this.movies = movies;
-    this.moviesList = [...this.moviesList, ...movies.results];
-  }
-
-  @autobind
-  @action
-  async handleVisibilityToFetchMore(sentinelVisibilityRatio) {
-    const canSeeSentinel = sentinelVisibilityRatio > 0;
-    if (this.canLoadMore() && canSeeSentinel) {
-      const page = this.movies.page + 1;
-      const movies = await api.getUpcomingMovies({ page });
-      this.setMovies(movies);
-    }
+    this.movies = [...this.movies, ...movies];
   }
 }
 

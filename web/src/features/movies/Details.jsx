@@ -1,20 +1,20 @@
 import React, { useCallback } from 'react';
 import Dialog from '@material-ui/core/Dialog';
 import { Observer } from 'mobx-react';
-import detailsStore from '../../../infrastructure/stores/detailsStore';
-import api from '../../../infrastructure/api';
+import detailsStore from '../../infrastructure/stores/detailsStore';
 import styled from 'styled-components';
-import measures from '../../../infrastructure/styles/measures';
-import Text from '../../../infrastructure/components/Text';
+import measures from '../../infrastructure/styles/measures';
+import Text from '../../infrastructure/components/Text';
 import ReleaseDate, {
   releaseDateCss,
-} from '../../../infrastructure/components/ReleaseDate';
+} from '../../infrastructure/components/ReleaseDate';
 import Overview, {
   overviewCss,
-} from '../../../infrastructure/components/Overview';
-import Genres from '../../../infrastructure/components/Genres';
+} from '../../infrastructure/components/Overview';
+import Genres from '../../infrastructure/components/Genres';
 import CloseButton from './CloseButton';
-import notFound from '../../../infrastructure/assets/404.jpg';
+import notFound from '../../infrastructure/assets/404.jpg';
+import api from '../../infrastructure/api';
 
 const Movie = styled.div(props => ({
   background: `url(${props.image}) no-repeat center center fixed`,
@@ -25,7 +25,7 @@ const Movie = styled.div(props => ({
 const Shadow = styled.div({
   height: '100%',
   background:
-    'linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 50%, rgba(0,0,0,1) 100%)',
+    'linear-gradient(0deg, rgba(0,0,0,1) 20%, rgba(0,0,0,0) 50%, rgba(0,0,0,1) 100%)',
   display: 'flex',
 });
 

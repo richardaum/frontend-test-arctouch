@@ -9,6 +9,13 @@ class Api {
     return response.data;
   }
 
+  async search({ query, page } = {}) {
+    const response = await Axios.get(`${baseUrl}/movie/search`, {
+      params: { page, query },
+    });
+    return response.data;
+  }
+
   async getGenres() {
     const response = await Axios.get(`${baseUrl}/movie/genres`);
     return response.data.genres;

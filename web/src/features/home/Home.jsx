@@ -2,7 +2,7 @@ import React from 'react';
 import { observer } from 'mobx-react';
 import styled from 'styled-components';
 import Cover from '../cover/Cover';
-import Movies from '../../movies/components/Movies';
+import Movies from '../movies/Movies';
 
 const Container = styled.div({
   height: 0,

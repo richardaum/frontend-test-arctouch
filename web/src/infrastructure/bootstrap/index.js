@@ -1,13 +1,17 @@
 import api from '../api';
 import moviesStore from '../stores/moviesStore';
 import genresStore from '../stores/genresStore';
+import upcomingStore from '../stores/upcomingStore';
 
 export async function bootstrap() {
-  const [movies, genres] = await Promise.all([
+  const [moviesResponse, genresReponse] = await Promise.all([
     api.getUpcomingMovies(),
     api.getGenres(),
   ]);
 
-  moviesStore.setMovies(movies);
-  genresStore.setGenres(genres);
+  upcomingStore.setResponse(moviesResponse);
+  upcomingStore.setMovies(moviesResponse.results);
+
+  moviesStore.setMovies(moviesResponse.results);
+  genresStore.setGenres(genresReponse);
 }

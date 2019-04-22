@@ -4,7 +4,7 @@ import moviesStore from '../../infrastructure/stores/moviesStore';
 import parse from 'date-fns/parse';
 import { format } from 'date-fns';
 import colors from '../../infrastructure/styles/colors';
-import Text from '../../infrastructure/components/Text';
+import Text from '../../infrastructure/Text';
 
 export default observer(function ReleaseDate() {
   const css = `

@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import measures from '../../infrastructure/styles/measures';
 import colors from '../../infrastructure/styles/colors';
 import Typography from '@material-ui/core/Typography';
-import MoviesItems from './MoviesItems';
 import DetailsDialog from './Details';
 import tabsStore, {
   UPCOMING,
@@ -11,6 +10,7 @@ import tabsStore, {
 } from '../../infrastructure/stores/tabsStore';
 import { Observer } from 'mobx-react';
 import SearchMovies from '../search/SearchMovies';
+import UpcomingMovies from './UpcomingMovies';
 
 const Background = styled.div({
   background: colors.concrete,
@@ -99,14 +99,14 @@ export default function Movies() {
                   active={tabsStore.selectedTab === SEARCH}
                   onClick={handleSearchClick}
                 >
-                  Search
+                  Movies
                 </Title>
               )}
             </Observer>
           </Border>
         </Tabs>
         <Observer>
-          {() => tabsStore.selectedTab === UPCOMING && <MoviesItems />}
+          {() => tabsStore.selectedTab === UPCOMING && <UpcomingMovies />}
         </Observer>
         <Observer>
           {() => tabsStore.selectedTab === SEARCH && <SearchMovies />}
