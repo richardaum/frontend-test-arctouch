@@ -18,7 +18,7 @@ import notFound from '../../../infrastructure/assets/404.jpg';
 
 const Movie = styled.div(props => ({
   background: `url(${props.image}) no-repeat center center fixed`,
-  backgroundSize: 'contain',
+  backgroundSize: 'cover',
   height: 'calc(100vh - 96px)',
 }));
 

@@ -1,16 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
-import api from '../../../infrastructure/api';
-import moviesStore from '../../../infrastructure/stores/moviesStore';
-import measures from '../../../infrastructure/styles/measures';
-import Genres from '../../../infrastructure/components/Genres';
-import Text from '../../../infrastructure/components/Text';
+import api from '../../infrastructure/api';
+import moviesStore from '../../infrastructure/stores/moviesStore';
+import measures from '../../infrastructure/styles/measures';
+import Genres from '../../infrastructure/components/Genres';
+import Text from '../../infrastructure/components/Text';
 import ReleaseDate, {
   releaseDateCss,
-} from '../../../infrastructure/components/ReleaseDate';
+} from '../../infrastructure/components/ReleaseDate';
 import Overview, {
   overviewCss,
-} from '../../../infrastructure/components/Overview';
+} from '../../infrastructure/components/Overview';
 
 const Movie = styled.div(props => ({
   height: '90%',

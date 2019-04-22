@@ -1,10 +1,10 @@
 import React from 'react';
 import { observer } from 'mobx-react';
-import moviesStore from '../../../infrastructure/stores/moviesStore';
+import moviesStore from '../../infrastructure/stores/moviesStore';
 import parse from 'date-fns/parse';
 import { format } from 'date-fns';
-import colors from '../../../infrastructure/styles/colors';
-import Text from '../../../infrastructure/components/Text';
+import colors from '../../infrastructure/styles/colors';
+import Text from '../../infrastructure/components/Text';
 
 export default observer(function ReleaseDate() {
   const css = `

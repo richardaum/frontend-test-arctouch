@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import styled from 'styled-components';
-import measures from '../../../infrastructure/styles/measures';
-import colors from '../../../infrastructure/styles/colors';
+import measures from '../../infrastructure/styles/measures';
+import colors from '../../infrastructure/styles/colors';
 import Typography from '@material-ui/core/Typography';
 import MoviesItems from './MoviesItems';
 import DetailsDialog from './Details';
+import tabsStore, {
+  UPCOMING,
+  SEARCH,
+} from '../../infrastructure/stores/tabsStore';
+import { Observer } from 'mobx-react';
+import SearchMovies from '../search/SearchMovies';
 
 const Background = styled.div({
   background: colors.concrete,
@@ -66,16 +72,45 @@ const Title = styled(function Title({ active, ...props }) {
 }));
 
 export default function Movies() {
+  const handleUpcomingClick = useCallback(() => {
+    tabsStore.setSelectedTab(UPCOMING);
+  });
+  const handleSearchClick = useCallback(() => {
+    tabsStore.setSelectedTab(SEARCH);
+  });
   return (
     <Background>
       <Content>
         <Tabs>
           <Border>
-            <Title active>Upcoming</Title>
-            <Title>Search</Title>
+            <Observer>
+              {() => (
+                <Title
+                  active={tabsStore.selectedTab === UPCOMING}
+                  onClick={handleUpcomingClick}
+                >
+                  Upcoming
+                </Title>
+              )}
+            </Observer>
+            <Observer>
+              {() => (
+                <Title
+                  active={tabsStore.selectedTab === SEARCH}
+                  onClick={handleSearchClick}
+                >
+                  Search
+                </Title>
+              )}
+            </Observer>
           </Border>
         </Tabs>
-        <MoviesItems />
+        <Observer>
+          {() => tabsStore.selectedTab === UPCOMING && <MoviesItems />}
+        </Observer>
+        <Observer>
+          {() => tabsStore.selectedTab === SEARCH && <SearchMovies />}
+        </Observer>
       </Content>
 
       <DetailsDialog />

@@ -1,14 +1,14 @@
 import React, { useCallback } from 'react';
 import styled from 'styled-components';
 import { observer } from 'mobx-react';
-import moviesStore from '../../../infrastructure/stores/moviesStore';
-import api from '../../../infrastructure/api';
+import moviesStore from '../../infrastructure/stores/moviesStore';
+import api from '../../infrastructure/api';
 import Genres from './Genres';
 import ReleaseDate from './ReleaseDate';
 import Title from './Title';
 import NoPoster from './NoPoster';
-import measures from '../../../infrastructure/styles/measures';
-import detailsStore from '../../../infrastructure/stores/detailsStore';
+import measures from '../../infrastructure/styles/measures';
+import detailsStore from '../../infrastructure/stores/detailsStore';
 
 const Card = styled.div({
   cursor: 'pointer',

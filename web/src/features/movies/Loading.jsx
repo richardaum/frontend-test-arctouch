@@ -1,6 +1,6 @@
 import React from 'react';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import colors from '../../../infrastructure/styles/colors';
+import colors from '../../infrastructure/styles/colors';
 import styled from 'styled-components';
 
 const Container = styled.div({
