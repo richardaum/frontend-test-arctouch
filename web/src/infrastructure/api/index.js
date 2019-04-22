@@ -1,7 +1,7 @@
 import Axios from 'axios';
 
 const imageBaseUrl = 'https://image.tmdb.org/t/p/';
-const baseUrl = 'http://localhost/api';
+const baseUrl = `http://${window.location.hostname}:8080/api`;
 
 class Api {
   async getUpcomingMovies({ page } = {}) {
